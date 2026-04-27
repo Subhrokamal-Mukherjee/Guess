@@ -69,7 +69,7 @@ def game():
         # Handle empty input first (before trying to convert to int)
 
         if user_input == "" and session["anger"] < 8:
-            message = "You didn’t even type anything...\nBe Better"
+            message = "You didn’t even type anything...Be Better"
             session["anger"] += 1
 
         elif user_input == "" and session["anger"] >= 8:
@@ -80,7 +80,7 @@ def game():
             try:
                 user_input = int(user_input)
             except ValueError:
-                message = "Come on..........\nThat’s not even a number!"
+                message = "Come on..........That’s not even a number!"
                 if session["anger"] < 8:
                     session["anger"] += 1
                 return render_template_string(
