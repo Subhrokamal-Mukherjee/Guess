@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+    <title>Guessing Game</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Guess the Number</h1>
+
+        <p class="message">{{ message|safe }}</p>
+
+        {% if game_over %}
+            <form method="post" action="/restart">
+                <button class="btn restart">Restart Game</button>
+            </form>
+        {% else %}
+            <form method="post">
+                <input name="guess" placeholder="Enter number..." autofocus>
+                <button class="btn">Submit</button>
+            </form>
+        {% endif %}
+    </div>
+</body>
+</html>

@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, request, render_template_string, session,redirect, url_for
+from flask import Flask, request, render_template, session,redirect, url_for
 import random
 
 app = Flask(__name__)
@@ -83,8 +83,8 @@ def game():
                 message = "Come on..........That’s not even a number!"
                 if session["anger"] < 8:
                     session["anger"] += 1
-                return render_template_string(
-                    HTML,
+                return render_template(
+                    "index.html",
                     message=message,
                     game_over=session.get("game_over", False)
                 )
@@ -92,8 +92,8 @@ def game():
             if user_input == session["target"]:
                 message = "Finally... you got it."
                 session["game_over"] = True
-                return render_template_string(
-                    HTML,
+                return render_template(
+                    "index.html",
                     message=message,
                     game_over=True
                 )
@@ -103,7 +103,8 @@ def game():
             if session["anger"] > 8:
                 message = "I’m done with you."
                 session["game_over"] = True
-                return render_template_string(
+                return render_template(
+                    "index.html",
                     HTML,
                     message=message,
                     game_over=True
@@ -127,8 +128,8 @@ def game():
             feedback = compare_to_target(user_input, session["target"])
             message += " " + feedback
 
-    return render_template_string(
-        HTML,
+    return render_template(
+        "index.html",
         message=message,
         game_over=session.get("game_over", False)
     )
