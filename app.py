@@ -75,6 +75,11 @@ def game():
         elif user_input == "" and session["anger"] >= 8:
             message = "I’m done with you."
             session["game_over"] = True
+            return render_template(
+                    "index.html",
+                    message=message,
+                    game_over=True
+                )
 
         else:
             try:
@@ -105,7 +110,6 @@ def game():
                 session["game_over"] = True
                 return render_template(
                     "index.html",
-                    HTML,
                     message=message,
                     game_over=True
                 )
