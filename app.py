@@ -126,7 +126,7 @@ def game():
             elif session["anger"] <= 6:
                 message = "This is getting ridiculous."
             else:
-                message = "You’re testing my patience."
+                message = "You’re testing my patience." 
 
             # compare_to_target feedback
             feedback = compare_to_target(user_input, session["target"])
